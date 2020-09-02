@@ -1,0 +1,88 @@
+#suggestions {
+    background-color: white;
+    position: absolute;
+    top:55px;
+    width: 79%;
+    text-align: right;
+    padding-right: 40px;
+}
+
+#searchDiv, #calendarDiv, #filtersRow {
+    background-color: rgb(45, 95, 136);
+}
+
+#searchDiv {
+    position: relative;
+}
+
+#calendarDiv .calendar {
+    background-color: white;
+}
+
+#roomsSelect select {
+    width: 300px;
+    height: 45px;
+}
+
+#rangeInput {
+    width: 300px;
+    height: 55px;
+    background-color: rgb(45, 95, 136);
+}
+
+#rangeInput input {
+    -webkit-appearance: none;
+    width: 90%;
+    height: 5px;
+    border-radius: 5px;  
+    background: #53a3ee;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+#rangeInput input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: lightgray;
+    cursor: pointer;
+  }
+  
+  #rangeInput input::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: lightgray;
+    cursor: pointer;
+  }
+
+  #rangeInput p, #starsInput p, #guestRatingInput p, #cityInput p {
+      color: white;
+  }
+
+  #starsInput, #guestRatingInput, #cityInput {
+    width: 200px;
+    height: 55px;
+    background-color: rgb(45, 95, 136);
+  }
+
+  #selectStarsInput, #selectGuestRatingInput, #selectCityFilter {
+      background-color: rgb(45, 95, 136);
+      color: white;
+      border: none;
+  }
+
+  .vl {
+    border-left: 1px solid lightgray;
+    margin: 8px 0px;
+}
+
+#sortingInput {
+    width: 300px;
+    height: 45px;
+    margin-right: 20px;
+}

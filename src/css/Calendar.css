@@ -1,0 +1,41 @@
+.calendar {
+    display: flex;
+    flex-direction: row;
+
+    width: 250px;
+    height: 45px;
+    border: 1px solid lightgrey;
+    font-size: small;
+}
+
+.dateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 10;
+    height: 45px;
+    margin-left: 5px;
+}
+
+input {
+    border: 1px solid transparent;
+    background-color: #ffffff;
+  }
+
+.colorColumn {
+    width: 15px;
+    height: 45px;
+    background-color: rgb(59, 112, 182);
+    margin-right: 10px;
+}
+
+i {
+    justify-content: flex-end;
+    align-self: center;
+    flex-grow: 3;
+}
+
+p {
+    /* justify-items: center; */
+    margin-bottom: 0px;
+}
