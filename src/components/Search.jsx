@@ -141,7 +141,6 @@ function Search(props) {
                 setSortingFilters(new Set(sortingFilters.add(filter.name)));
             });
         });
-        console.log(sortingFilters);
 
         searchResults.forEach((result) => {
             setCities(new Set(cities.add(result.city)));
@@ -156,7 +155,7 @@ function Search(props) {
         <>
             <div className="row p-2" id="searchDiv">
                 <form id="mainForm" autoComplete="off" onSubmit={search} className="form-inline" style={{ width: "100%" }}>
-                    <input type="text" name="city" placeholder="Enter destination" id="city" onChange={autoSuggest} style={{ width: "80%", height: "45px" }} />
+                    <input type="text" name="city" placeholder="Enter destination (Click Search without input to view all the hotels)" id="city" onChange={autoSuggest} style={{ width: "80%", height: "45px" }} />
                     <input type="submit" value="Search" className="btn btn-primary" style={{ width: "20%", height: "45px" }} />
                     <div id="suggestions">
                         {suggestions.map((suggestion) => (
@@ -247,7 +246,7 @@ function Search(props) {
                 </div>
             </div>
             {/* <!-- Modal --> */}
-            <div className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">

@@ -3,8 +3,6 @@
     position: absolute;
     top:55px;
     width: 79%;
-    text-align: right;
-    padding-right: 40px;
 }
 
 #searchDiv, #calendarDiv, #filtersRow {

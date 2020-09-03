@@ -24,7 +24,7 @@ export default function Calendar(props) {
 
     React.useEffect(() => {
         setDate(props.date);
-    });
+    },[props.date]);
 
     return (
         <div className="calendar mr-2">
