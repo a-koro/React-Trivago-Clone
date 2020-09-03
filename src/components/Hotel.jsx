@@ -32,7 +32,7 @@ function Hotel(props) {
                 <div className="price">
                     <p className="fontColor">Hotel Website</p>
                     <h5 className="fontColor">${props.hotel.price}</h5>
-                    <p className="fontColor">3 nights for ${props.hotel.price*3}</p>
+                    <p className="fontColor">{props.nightsToStay} nights for ${props.hotel.price*props.nightsToStay}</p>
                     <br/>
                     <button id="dealButton">
                         View Deal &gt;

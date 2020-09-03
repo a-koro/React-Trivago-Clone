@@ -7,7 +7,7 @@ function Results(props) {
         <div className="row bg-light justify-content-center">
             {props.hotels.map((hotel) => (
                 <Hotel 
-                    hotel={hotel}/>
+                    hotel={hotel} nightsToStay={props.nightsToStay}/>
             ))}
         </div>
     );

@@ -5,19 +5,26 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Calendar(props) {
 
-    const [date, setDate] = React.useState( new Date(new Date().setDate(new Date().getDate() + props.daysAfterToday)) );
+    const [date, setDate] = React.useState(props.date);
 
-    let handleChange = date => {
-        setDate(date);
+    function handleChange(selectedDate) {
+        setDate(selectedDate);
+        props.setDate(selectedDate);
     };
 
     function incrementDate() {
-        setDate(new Date(date.setDate(date.getDate() +1)));
+        setDate(new Date(date.setDate(date.getDate() + 1)));
+        props.setDate(date);
     }
 
     function decrementDate() {
-        setDate(new Date(date.setDate(date.getDate() -1)));
+        setDate(new Date(date.setDate(date.getDate() - 1)));
+        props.setDate(date);
     }
+
+    React.useEffect(() => {
+        setDate(props.date);
+    });
 
     return (
         <div className="calendar mr-2">
@@ -27,6 +34,7 @@ export default function Calendar(props) {
             <div className="dateContainer">
                 <p>{props.check}</p>
                 <DatePicker
+                    dateFormat="dd/MM/yyyy"
                     selected={date}
                     onChange={handleChange}
                 />

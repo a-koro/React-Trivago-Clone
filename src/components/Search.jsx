@@ -14,6 +14,10 @@ function Search(props) {
     let [selectedRangeValue, setSelectedRangeValue] = useState("1999");
     const[sortingFilters, setSortingFilters] = useState(new Set());
 
+    const[startDate, setStartDate] = useState(new Date());
+    const[endDate, setEndDate] = useState(new Date(new Date().setDate(new Date().getDate() + 3)));
+    const[nights, setNights] = useState(3);
+
     const [searchResults, setSearchResults] = useState([]);
     const [cities, setCities] = useState(new Set());
 
@@ -107,6 +111,30 @@ function Search(props) {
         setHotels(hotels);
     }
 
+    function setStartDateOnChange(date) {
+        if(checkDates(date, endDate) && Math.floor(Math.abs(endDate - date)/ (1000 * 60 * 60 * 24)) != 0) {
+            setStartDate(date);
+            setNights(Math.floor(Math.abs(endDate - date)/ (1000 * 60 * 60 * 24)));
+        }
+        else {
+            alert("Check-in date must be before check-out date!");
+            setStartDate(new Date(startDate.setDate(startDate.getDate() -1)));
+        }
+    }
+    function setEndDateOnChange(date) {
+        if(checkDates(startDate, date) && Math.floor(Math.abs(date - startDate)/ (1000 * 60 * 60 * 24)) != 0) {
+            setEndDate(date);
+            setNights(Math.ceil(Math.abs(date - startDate)/ (1000 * 60 * 60 * 24)));
+        }
+        else {
+            alert("Check-out date must be after check-in date!");
+            setEndDate(new Date(endDate.setDate(endDate.getDate() + 1)));
+        }
+    }
+    function checkDates(startDate, endDate) {
+        return endDate > startDate;
+    }
+
     useEffect(() => {
         searchResults.forEach((result) => {
             result.filters.forEach(filter => {
@@ -119,6 +147,10 @@ function Search(props) {
             setCities(new Set(cities.add(result.city)));
         });
     },[searchResults]);
+
+    useEffect(() => {
+        setNights(Math.floor(Math.abs(endDate - startDate)/ (1000 * 60 * 60 * 24)));
+    },[startDate, endDate]);
 
     return (
         <>
@@ -134,8 +166,8 @@ function Search(props) {
                 </form>
             </div>
             <div className="row px-2 pb-2" id="calendarDiv">
-                <Calendar check="Check-in" daysAfterToday={0}/>
-                <Calendar check="Check-out" color="orange" daysAfterToday={3}/>
+                <Calendar check="Check-in" setDate={setStartDateOnChange} date={startDate}/>
+                <Calendar check="Check-out" color="orange" setDate={setEndDateOnChange} date={endDate}/>
                 <form action="" id="roomsSelect">
                     <select id="rooms" name="rooms">
                         <option value="single">Single room</option>
@@ -231,7 +263,7 @@ function Search(props) {
                     </div>
                 </div>
             </div>
-            <Results hotels={hotels} />
+            <Results hotels={hotels} nightsToStay={nights}/>
         </>
     );
 }
